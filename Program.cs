@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Snake
 {
-    //Philip
+    //Philip - The code below is to make a structure that holds the row's variable and column's variable as global to be used
     struct Position
     {
         public int row;
@@ -50,7 +50,7 @@ namespace Snake
             //max - Set the time for the lastFoodTime
             lastFoodTime = Environment.TickCount;
             
-            //philip
+            //philip - This List is to list out where would the obstacles will be appearing in the game by using X, Y Coordinator
             List<Position> obstacles = new List<Position>()
             {
                 new Position(12, 12),
@@ -73,7 +73,8 @@ namespace Snake
             {
                 snakeElements.Enqueue(new Position(0, i));
             }
-            //Philip
+            //Philip - This part of code is to randomly spawn the food to any row and col, 
+            //while the food is eaten by snake or spawn at the obstacles' or snake's position, it will respawn again.
             Position food;
             do
             {
@@ -117,10 +118,11 @@ namespace Snake
                         if (direction != up) direction = down;
                     }
                 }
-                //philip
+                //philip - Snakeelements' last array number will be the snakeHead's position.
                 Position snakeHead = snakeElements.Last();
+                //nextDirection's value will be the direction's that is input by the user.
                 Position nextDirection = directions[direction];
-
+                //snakeNewHead will be using the if statement at line after 122 to calculate and get the result.
                 Position snakeNewHead = new Position(snakeHead.row + nextDirection.row,
                     snakeHead.col + nextDirection.col);
                 
@@ -145,7 +147,7 @@ namespace Snake
                     Console.WriteLine("Your points are: {0}", userPoints);
                     return;
                 }
-                //philip
+                //philip - Base on where the snakehead's position,produce gray color * for the snake body
                 Console.SetCursorPosition(snakeHead.col, snakeHead.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("*");
@@ -199,7 +201,8 @@ namespace Snake
                     Console.SetCursorPosition(last.col, last.row);
                     Console.Write(" ");
                 }
-                //philip
+                //philip - This if statement is to reposition the food's position 
+                //from its last location if the tickcount is more than the foodDissapearTime
                 if (Environment.TickCount - lastFoodTime >= foodDissapearTime)
                 {
                     negativePoints = negativePoints + 50;
