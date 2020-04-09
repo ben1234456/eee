@@ -30,7 +30,8 @@ namespace Snake
             int lastFoodTime = 0;
             int foodDissapearTime = 8000;
             int negativePoints = 0;
-            //max
+            
+            //max - Creates an array that has four directions
             Position[] directions = new Position[]
             {
                 new Position(0, 1), // right
@@ -38,11 +39,17 @@ namespace Snake
                 new Position(1, 0), // down
                 new Position(-1, 0), // up
             };
+            //max - Sets the time to 100 milliseconds
             double sleepTime = 100;
+            //max - Sets the direction of the snake
             int direction = right;
+            //max - Randomly generate a number
             Random randomNumbersGenerator = new Random();
+            //max - Set the height of the console
             Console.BufferHeight = Console.WindowHeight;
+            //max - Set the time for the lastFoodTime
             lastFoodTime = Environment.TickCount;
+            
             //philip
             List<Position> obstacles = new List<Position>()
             {
@@ -52,7 +59,8 @@ namespace Snake
                 new Position(19, 19),
                 new Position(6, 9),
             };
-            //max
+            
+            //max - Setting the color, position and the 'symbol' (which is '=') of the obstacle.
             foreach (Position obstacle in obstacles)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -76,7 +84,8 @@ namespace Snake
             Console.SetCursorPosition(food.col, food.row);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("@");
-            //max
+            
+            //max - Setting the color, position and the 'symbol' (which is '*') of the snakeElements.
             foreach (Position position in snakeElements)
             {
                 Console.SetCursorPosition(position.col, position.row);
@@ -114,11 +123,16 @@ namespace Snake
 
                 Position snakeNewHead = new Position(snakeHead.row + nextDirection.row,
                     snakeHead.col + nextDirection.col);
-                //max
+                
+                //max - allows the snake to appear at the bottom when the snake moves out of the top border vertically
                 if (snakeNewHead.col < 0) snakeNewHead.col = Console.WindowWidth - 1;
+                //max - allows the snake to appear on the right side when the snake moves out of the left border horizontally
                 if (snakeNewHead.row < 0) snakeNewHead.row = Console.WindowHeight - 1;
+                //max - allows the snake to appear on the left side when the snake moves out of the right border horizontally
                 if (snakeNewHead.row >= Console.WindowHeight) snakeNewHead.row = 0;
+                //max - allows the snake to appear at the top when the snake moves out of the bottom border vertically
                 if (snakeNewHead.col >= Console.WindowWidth) snakeNewHead.col = 0;
+                
                 //ben
                 if (snakeElements.Contains(snakeNewHead) || obstacles.Contains(snakeNewHead))
                 {
@@ -135,10 +149,14 @@ namespace Snake
                 Console.SetCursorPosition(snakeHead.col, snakeHead.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("*");
-                //max
+                
+                //max - Add the 'snakeNewHead' to the queue
                 snakeElements.Enqueue(snakeNewHead);
+                //max - Set the position of the snakeNewHead
                 Console.SetCursorPosition(snakeNewHead.col, snakeNewHead.row);
+                //max - set the color of the snake head
                 Console.ForegroundColor = ConsoleColor.Gray;
+                //max - controls the direction of the snake
                 if (direction == right) Console.Write(">");
                 if (direction == left) Console.Write("<");
                 if (direction == up) Console.Write("^");
@@ -195,13 +213,18 @@ namespace Snake
                     while (snakeElements.Contains(food) || obstacles.Contains(food));
                     lastFoodTime = Environment.TickCount;
                 }
-                //max
+                
+                //max - Set the position of the food
                 Console.SetCursorPosition(food.col, food.row);
+                //max - Set the color of the food
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                //max - Set the 'symbol' for food (which is '@')
                 Console.Write("@");
-
+                    
+                //max - decrement the sleepTime by 0.01
                 sleepTime -= 0.01;
-
+                
+                //max - The program will stop when it has reached the sleepTime
                 Thread.Sleep((int)sleepTime);
             }
         }
