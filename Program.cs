@@ -167,7 +167,7 @@ namespace Snake
                 if (direction == up) Console.Write("^");
                 if (direction == down) Console.Write("v");
 
-                //ben - assign the food to a random place (not in snake elements and obstacles) 
+                //ben - if snake head reached the food, the snake elements increase by 1 and add a new food and an obstacle.
                 if (snakeNewHead.col == food.col && snakeNewHead.row == food.row)
                 {
                     // feeding the snake
