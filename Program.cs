@@ -30,7 +30,7 @@ namespace Snake
             int lastFoodTime = 0;
             int foodDissapearTime = 8000;
             int negativePoints = 0;
-
+            //max
             Position[] directions = new Position[]
             {
                 new Position(0, 1), // right
@@ -43,7 +43,7 @@ namespace Snake
             Random randomNumbersGenerator = new Random();
             Console.BufferHeight = Console.WindowHeight;
             lastFoodTime = Environment.TickCount;
-
+            //philip
             List<Position> obstacles = new List<Position>()
             {
                 new Position(12, 12),
@@ -52,19 +52,20 @@ namespace Snake
                 new Position(19, 19),
                 new Position(6, 9),
             };
+            //max
             foreach (Position obstacle in obstacles)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.SetCursorPosition(obstacle.col, obstacle.row);
                 Console.Write("=");
             }
-
+            //ben
             Queue<Position> snakeElements = new Queue<Position>();
             for (int i = 0; i <= 5; i++)
             {
                 snakeElements.Enqueue(new Position(0, i));
             }
-
+            //Philip
             Position food;
             do
             {
@@ -75,14 +76,14 @@ namespace Snake
             Console.SetCursorPosition(food.col, food.row);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("@");
-
+            //max
             foreach (Position position in snakeElements)
             {
                 Console.SetCursorPosition(position.col, position.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("*");
             }
-
+            //ben
             while (true)
             {
                 negativePoints++;
@@ -107,18 +108,18 @@ namespace Snake
                         if (direction != up) direction = down;
                     }
                 }
-
+                //philip
                 Position snakeHead = snakeElements.Last();
                 Position nextDirection = directions[direction];
 
                 Position snakeNewHead = new Position(snakeHead.row + nextDirection.row,
                     snakeHead.col + nextDirection.col);
-
+                //max
                 if (snakeNewHead.col < 0) snakeNewHead.col = Console.WindowWidth - 1;
                 if (snakeNewHead.row < 0) snakeNewHead.row = Console.WindowHeight - 1;
                 if (snakeNewHead.row >= Console.WindowHeight) snakeNewHead.row = 0;
                 if (snakeNewHead.col >= Console.WindowWidth) snakeNewHead.col = 0;
-
+                //ben
                 if (snakeElements.Contains(snakeNewHead) || obstacles.Contains(snakeNewHead))
                 {
                     Console.SetCursorPosition(0, 0);
@@ -130,11 +131,11 @@ namespace Snake
                     Console.WriteLine("Your points are: {0}", userPoints);
                     return;
                 }
-
+                //philip
                 Console.SetCursorPosition(snakeHead.col, snakeHead.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("*");
-
+                //max
                 snakeElements.Enqueue(snakeNewHead);
                 Console.SetCursorPosition(snakeNewHead.col, snakeNewHead.row);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -143,7 +144,7 @@ namespace Snake
                 if (direction == up) Console.Write("^");
                 if (direction == down) Console.Write("v");
 
-
+                //ben
                 if (snakeNewHead.col == food.col && snakeNewHead.row == food.row)
                 {
                     // feeding the snake
@@ -180,7 +181,7 @@ namespace Snake
                     Console.SetCursorPosition(last.col, last.row);
                     Console.Write(" ");
                 }
-
+                //philip
                 if (Environment.TickCount - lastFoodTime >= foodDissapearTime)
                 {
                     negativePoints = negativePoints + 50;
@@ -194,7 +195,7 @@ namespace Snake
                     while (snakeElements.Contains(food) || obstacles.Contains(food));
                     lastFoodTime = Environment.TickCount;
                 }
-
+                //max
                 Console.SetCursorPosition(food.col, food.row);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("@");
