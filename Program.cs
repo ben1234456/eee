@@ -7,7 +7,8 @@ using System.Threading;
 
 namespace Snake
 {
-    struct Position(Philip)
+    //Philip
+    struct Position
     {
         public int row;
         public int col;
