@@ -141,17 +141,22 @@ namespace Snake
                 //ben - if snake head is collide with the body, show the word "Game over!" and show the points
                 if (snakeElements.Contains(snakeNewHead) || obstacles.Contains(snakeNewHead))
                 {
-                    Console.SetCursorPosition(0, 0);
+                    //Set Game over to middle of the window
+                    Console.SetCursorPosition(54, 13);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Game over!");
                     int userPoints = (snakeElements.Count - 6) * 100 - negativePoints;
                     //if (userPoints < 0) userPoints = 0;
+                    //Set Score to middle of the window
+                    Console.SetCursorPosition(50, 14);
                     userPoints = Math.Max(userPoints, 0);
                     Console.WriteLine("Your points are: {0}", userPoints);
                     //Add player score into plain text file.
                     StreamWriter snakeFile = new StreamWriter("Snake_Score.txt");
                     snakeFile.Write("Your high score is: " + userPoints);
                     snakeFile.Close();
+                    //Set instruction to middle of window
+                    Console.SetCursorPosition(45, 15);
                     Console.WriteLine("Press Enter to quit the game");
                     Console.Read();
                     return;
