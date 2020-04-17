@@ -264,6 +264,15 @@ namespace Snake
                 //max - Set the 'symbol' for food (which is '@')
                 Console.Write("@");
                     
+                 //Add winning requirement
+                if (snakeElements.Count == 5) 
+                {
+                    Console.SetCursorPosition(54, 13);
+                    Console.WriteLine("YOU WIN!");
+                    Console.Read();
+                    return;
+                }
+                
                 //max - decrement the sleepTime by 0.01
                 sleepTime -= 0.01;
                 
