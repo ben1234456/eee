@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Threading;
 using System.IO;
+using System.Media;
 
 namespace Snake
 {
@@ -31,6 +32,11 @@ namespace Snake
             int lastFoodTime = 0;
             int foodDissapearTime = 16000;
             int negativePoints = 0;
+            
+             //Background music code
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Waltz-music-loop.wav";
+            player.PlayLooping();
             
             //max - Creates an array that has four directions
             Position[] directions = new Position[]
@@ -189,6 +195,10 @@ namespace Snake
                 //ben - if snake head reached the food, the snake elements increase by 1 and add a new food and an obstacle.
                 if (snakeNewHead.col == food.col && snakeNewHead.row == food.row)
                 {
+                    //Soundeffect added.
+                    SoundPlayer soundeffect = new SoundPlayer();
+                    soundeffect.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\se.wav";
+                    soundeffect.Play();
                     // feeding the snake
                     do
                     {
