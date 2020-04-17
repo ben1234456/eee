@@ -70,7 +70,7 @@ namespace Snake
             }
             //ben - create 5 bodies of the snake (*) and adds to the new position (0,1), (0,2), (0,3), (0,4), (0,5)
             Queue<Position> snakeElements = new Queue<Position>();
-            for (int i = 0; i <= 3; i++)
+            for (int i = 5; i <= 8; i++)
             {
                 snakeElements.Enqueue(new Position(0, i));
             }
@@ -99,7 +99,14 @@ namespace Snake
             while (true)
             {
                 negativePoints++;
+                
+                int userPoint = (snakeElements.Count - 6) * 100 - negativePoints;
+                if (userPoint < 0) userPoint = 0;
+                userPoint = Math.Max(userPoint, 0);
 
+                Console.SetCursorPosition(0, 0);
+                Console.Write("Score:{0}",userPoint);
+                
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo userInput = Console.ReadKey();
