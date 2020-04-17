@@ -53,11 +53,11 @@ namespace Snake
             //philip - This List is to list out where would the obstacles will be appearing in the game by using X, Y Coordinator
             List<Position> obstacles = new List<Position>()
             {
-                new Position(12, 12),
-                new Position(14, 20),
-                new Position(7, 7),
-                new Position(19, 19),
-                new Position(6, 9),
+                new Position(randomNumbersGenerator.Next(0,Console.WindowHeight), randomNumbersGenerator.Next(0,Console.WindowWidth)),
+                new Position(randomNumbersGenerator.Next(0,Console.WindowHeight), randomNumbersGenerator.Next(0,Console.WindowWidth)),
+                new Position(randomNumbersGenerator.Next(0,Console.WindowHeight), randomNumbersGenerator.Next(0,Console.WindowWidth)),
+                new Position(randomNumbersGenerator.Next(0,Console.WindowHeight), randomNumbersGenerator.Next(0,Console.WindowWidth)),
+                new Position(randomNumbersGenerator.Next(0,Console.WindowHeight), randomNumbersGenerator.Next(0,Console.WindowWidth)),
             };
             
             //max - Setting the color, position and the 'symbol' (which is '=') of the obstacle.
@@ -147,6 +147,8 @@ namespace Snake
                     //if (userPoints < 0) userPoints = 0;
                     userPoints = Math.Max(userPoints, 0);
                     Console.WriteLine("Your points are: {0}", userPoints);
+                    Console.WriteLine("Press Enter to quit the game");
+                    Console.Read();
                     return;
                 }
                 
