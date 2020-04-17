@@ -28,7 +28,7 @@ namespace Snake
             byte down = 2;
             byte up = 3;
             int lastFoodTime = 0;
-            int foodDissapearTime = 8000;
+            int foodDissapearTime = 16000;
             int negativePoints = 0;
             
             //max - Creates an array that has four directions
@@ -69,7 +69,7 @@ namespace Snake
             }
             //ben - create 5 bodies of the snake (*) and adds to the new position (0,1), (0,2), (0,3), (0,4), (0,5)
             Queue<Position> snakeElements = new Queue<Position>();
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 snakeElements.Enqueue(new Position(0, i));
             }
