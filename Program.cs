@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Threading;
+using System.IO;
 
 namespace Snake
 {
@@ -147,6 +148,10 @@ namespace Snake
                     //if (userPoints < 0) userPoints = 0;
                     userPoints = Math.Max(userPoints, 0);
                     Console.WriteLine("Your points are: {0}", userPoints);
+                    //Add player score into plain text file.
+                    StreamWriter snakeFile = new StreamWriter("Snake_Score.txt");
+                    snakeFile.Write("Your high score is: " + userPoints);
+                    snakeFile.Close();
                     Console.WriteLine("Press Enter to quit the game");
                     Console.Read();
                     return;
