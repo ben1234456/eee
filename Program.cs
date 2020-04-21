@@ -196,9 +196,7 @@ namespace Snake
                 if (snakeNewHead.col == food.col && snakeNewHead.row == food.row)
                 {
                     //Soundeffect added.
-                    SoundPlayer soundeffect = new SoundPlayer();
-                    soundeffect.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\se.wav";
-                    soundeffect.Play();
+                    SystemSounds.Beep.Play();
                     // feeding the snake
                     do
                     {
