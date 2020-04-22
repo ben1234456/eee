@@ -60,11 +60,12 @@ namespace Snake
 
             //philip - This List is to list out where would the obstacles will be appearing in the game by using X, Y Coordinator
             List<Position> obstacles = new List<Position>();
-            
-            for (int i = 0; i < 5; i++) {
-                obstacles.Add(new Position(randomNumbersGenerator.Next(0, Console.WindowHeight), randomNumbersGenerator.Next(0, Console.WindowWidth)));               
+
+            for (int i = 0; i < 5; i++)
+            {
+                obstacles.Add(new Position(randomNumbersGenerator.Next(0, Console.WindowHeight), randomNumbersGenerator.Next(0, Console.WindowWidth)));
             }
-           
+
             //max - Setting the color, position and the 'symbol' (which is '=') of the obstacle.
             foreach (Position obstacle in obstacles)
             {
@@ -100,7 +101,7 @@ namespace Snake
             {
                 negativePoints++;
 
-                int userPoint = (snakeElements.Count - 6) * 100 - negativePoints;
+                int userPoint = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoint < 0) userPoint = 0;
                 userPoint = Math.Max(userPoint, 0);
 
@@ -149,6 +150,8 @@ namespace Snake
                 if (snakeElements.Contains(snakeNewHead) || obstacles.Contains(snakeNewHead))
                 {
                     Lose();
+                    Console.Read();
+                    return;
                 }
 
                 //philip - Base on where the snakehead's position,produce gray color * for the snake body
@@ -229,9 +232,11 @@ namespace Snake
                 SetFood();
 
                 //Add winning requirement
-                if (snakeElements.Count == 30)
+                if (snakeElements.Count == 7)
                 {
                     Win();
+                    Console.Read();
+                    return;
                 }
 
                 //max - decrement the sleepTime by 0.01
@@ -240,11 +245,12 @@ namespace Snake
                 //max - The program will stop when it has reached the sleepTime
                 Thread.Sleep((int)sleepTime);
 
-             
+
             }
 
             // set the food postion,color,icon.
-            void SetFood() {
+            void SetFood()
+            {
                 Console.SetCursorPosition(food.col, food.row);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("@");
@@ -274,7 +280,7 @@ namespace Snake
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Game over!");
 
-                int userPoints = (snakeElements.Count - 6) * 100 - negativePoints;
+                int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
                 //Set Score to middle of the window
@@ -290,16 +296,29 @@ namespace Snake
                 //Set instruction to middle of window
                 Console.SetCursorPosition(45, 15);
                 Console.WriteLine("Press Enter to quit the game");
-                Console.Read();
-                return;
             }
 
             void Win()
             {
                 Console.SetCursorPosition(54, 13);
                 Console.WriteLine("YOU WIN!");
-                Console.Read();
-                return;
+
+                int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
+                if (userPoints < 0) userPoints = 0;
+
+                //Set Score to middle of the window
+                Console.SetCursorPosition(50, 14);
+                userPoints = Math.Max(userPoints, 0);
+                Console.WriteLine("Your points are: {0}", userPoints);
+
+                //Add player score into plain text file.
+                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt");
+                snakeFile.Write("Your high score is: " + userPoints);
+                snakeFile.Close();
+
+                //Set instruction to middle of window
+                Console.SetCursorPosition(45, 15);
+                Console.WriteLine("Press Enter to quit the game");
             }
         }
     }
