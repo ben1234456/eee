@@ -289,8 +289,8 @@ namespace Snake
                 Console.WriteLine("Your points are: {0}", userPoints);
 
                 //Add player score into plain text file.
-                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt");
-                snakeFile.Write("Your high score is: " + userPoints);
+                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt", true);
+                snakeFile.Write("Your high score is: " + userPoints + "\n");
                 snakeFile.Close();
 
                 //Set instruction to middle of window
@@ -312,8 +312,8 @@ namespace Snake
                 Console.WriteLine("Your points are: {0}", userPoints);
 
                 //Add player score into plain text file.
-                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt");
-                snakeFile.Write("Your high score is: " + userPoints);
+                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt", true);
+                snakeFile.Write("Your high score is: " + userPoints + "\n");
                 snakeFile.Close();
 
                 //Set instruction to middle of window
