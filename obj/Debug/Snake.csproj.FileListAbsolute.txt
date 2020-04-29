@@ -3,3 +3,6 @@ C:\Users\Asus\Documents\Swinburne Studies\Degree 2nd Year\Development Project 1 
 C:\Users\Asus\Documents\Swinburne Studies\Degree 2nd Year\Development Project 1 Tools and Practices\Week 4\Snake\Snake\bin\Debug\Snake.pdb
 C:\Users\Asus\Documents\Swinburne Studies\Degree 2nd Year\Development Project 1 Tools and Practices\Week 4\Snake\Snake\obj\Debug\Snake.exe
 C:\Users\Asus\Documents\Swinburne Studies\Degree 2nd Year\Development Project 1 Tools and Practices\Week 4\Snake\Snake\obj\Debug\Snake.pdb
+C:\Users\User\Snake\obj\Debug\Snake.exe
+C:\Users\User\Snake\obj\Debug\Snake.pdb
+C:\Users\User\Snake\obj\Debug\Snake.csprojAssemblyReference.cache

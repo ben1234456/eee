@@ -279,7 +279,7 @@ namespace Snake
                 Console.SetCursorPosition(54, 13);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Game over!");
-
+				
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
@@ -301,7 +301,7 @@ namespace Snake
             void Win()
             {
                 Console.SetCursorPosition(54, 13);
-                Console.WriteLine("YOU WIN!");
+                Console.WriteLine("YOU WIN!!");
 
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
