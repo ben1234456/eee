@@ -6,3 +6,6 @@ C:\Users\Asus\Documents\Swinburne Studies\Degree 2nd Year\Development Project 1 
 C:\Users\User\Snake\obj\Debug\Snake.exe
 C:\Users\User\Snake\obj\Debug\Snake.pdb
 C:\Users\User\Snake\obj\Debug\Snake.csprojAssemblyReference.cache
+C:\Users\User\Snake\bin\Debug\Snake.exe.config
+C:\Users\User\Snake\bin\Debug\Snake.exe
+C:\Users\User\Snake\bin\Debug\Snake.pdb

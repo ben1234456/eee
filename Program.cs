@@ -35,9 +35,7 @@ namespace Snake
             int negativePoints = 0;
 
             //Background music code
-            SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Waltz-music-loop.wav";
-            player.PlayLooping();
+            
 
             //max - Creates an array that has four directions
             Position[] directions = new Position[]
