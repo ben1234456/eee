@@ -35,7 +35,9 @@ namespace Snake
             int negativePoints = 0;
 
             //Background music code
-            
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Waltz-music-loop.wav";
+            player.Play();
 
             //max - Creates an array that has four directions
             Position[] directions = new Position[]
@@ -273,16 +275,19 @@ namespace Snake
             //lose
             void Lose()
             {
+                int x = Console.WindowWidth / 2;
+                int y = Console.WindowHeight / 2;
                 //Set Game over to middle of the window
-                Console.SetCursorPosition(54, 13);
+                Console.SetCursorPosition(x,y);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Game over!");
+            
 				
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
                 //Set Score to middle of the window
-                Console.SetCursorPosition(50, 14);
+                Console.SetCursorPosition(x, y+1);
                 userPoints = Math.Max(userPoints, 0);
                 Console.WriteLine("Your points are: {0}", userPoints);
 
@@ -292,20 +297,22 @@ namespace Snake
                 snakeFile.Close();
 
                 //Set instruction to middle of window
-                Console.SetCursorPosition(45, 15);
+                Console.SetCursorPosition(x, y+2);
                 Console.WriteLine("Press Enter to quit the game");
             }
 
             void Win()
             {
-                Console.SetCursorPosition(54, 13);
+                int x = Console.WindowWidth / 2;
+                int y = Console.WindowHeight / 2;
+                Console.SetCursorPosition(x, y);
                 Console.WriteLine("YOU WIN!!");
 
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
                 //Set Score to middle of the window
-                Console.SetCursorPosition(50, 14);
+                Console.SetCursorPosition(x, y+1);
                 userPoints = Math.Max(userPoints, 0);
                 Console.WriteLine("Your points are: {0}", userPoints);
 
@@ -315,7 +322,7 @@ namespace Snake
                 snakeFile.Close();
 
                 //Set instruction to middle of window
-                Console.SetCursorPosition(45, 15);
+                Console.SetCursorPosition(x, y+2);
                 Console.WriteLine("Press Enter to quit the game");
             }
         }
